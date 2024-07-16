@@ -2,6 +2,13 @@ sequenceDiagram
     participant browser
     participant server
 
+    Note right of browser: The button on the form is clicked and the browser will send user input to the server
+
+    browser->>server: POST https://fullstack-exampleapp.herokuapp.com/new_note
+    activate server
+    server-->>browser: Status code 302 (redirect)
+    deactivate server
+
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
     server-->>browser: HTML document
